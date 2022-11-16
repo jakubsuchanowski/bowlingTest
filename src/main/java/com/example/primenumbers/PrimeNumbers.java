@@ -1,12 +1,19 @@
 package com.example.primenumbers;
 
+import java.util.Scanner;
+
 public class PrimeNumbers {
     CommonOperations co;
 
-    public PrimeNumbers() {
+
+    public PrimeNumbers()
+    {
         co = new CommonOperations();
     }
 
+    public PrimeNumbers(CommonOperations co){
+        this.co=co;
+    }
     public int[][] createTable(int x) {
         //initialize and fill the table as follows:
         // |2|3|4|5|6...
@@ -46,4 +53,17 @@ public class PrimeNumbers {
             }
         }
     }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Give the maximum of the range (eg.100)");
+        String s = in.nextLine();
+        int size = Integer.parseInt(s) - 1;
+        PrimeNumbers pm = new PrimeNumbers();
+        int[][] numbersTable = pm.createTable(size);
+        int root = new CommonOperations().floorRootValue(size);
+        numbersTable = pm.markNonPrimeFromTable(numbersTable, root);
+        System.out.println("");
+        pm.showPrimeNumbers(numbersTable);
+    }
 }
+

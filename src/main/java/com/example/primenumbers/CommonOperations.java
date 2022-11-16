@@ -7,6 +7,10 @@ public class CommonOperations {
     }
     //is the number divisable by the other one?
     boolean isDivisible(int divident, int divisor) {
+        if(divisor==0){
+            throw new IllegalArgumentException();
+        }
+
         double result = divident / (double) divisor;
         if (result == (int) result) {
             return true;
